@@ -1,0 +1,18 @@
+Package: certstream-server-rust
+Version: 1.6.0-1
+Architecture: arm64
+Maintainer: reloading01 <reloading01@users.noreply.github.com>
+Installed-Size: 11320
+Filename: pool/main/c/certstream-server-rust/certstream-server-rust_1.6.0-1_arm64.deb
+Size: 3796576
+MD5sum: a9c01fad99c835936cc1867843702d22
+SHA1: 75b7561d2a1fd7ca685072bf551e814fa0516b01
+SHA256: a208004a7cf4b9e8627989299bbccc706c159f15493dfa7fce2d522b2384de1d
+Section: net
+Priority: optional
+Homepage: https://certstream.dev
+Description: High-performance Certificate Transparency log streaming server
+ Monitors every Chrome- and Apple-trusted Certificate Transparency log and
+ streams newly issued TLS certificates over WebSocket and SSE. Speaks both RFC
+ 6962 and the static-ct-api tile protocol from a single binary.
+
