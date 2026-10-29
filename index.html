@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package repositories | certstream-server-rust</title>
+    <meta name="description" content="APT and DNF repositories for certstream-server-rust: install with apt or dnf and get updates through your package manager.">
+    <link rel="canonical" href="https://reloading01.github.io/packages/">
+    <link rel="icon" type="image/svg+xml" href="https://certstream.dev/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://certstream.dev/styles.css">
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <a href="https://certstream.dev/" class="logo">certstream-server-rust</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="https://certstream.dev/">Home</a></li>
+                    <li><a href="https://certstream.dev/docs.html">API Docs</a></li>
+                    <li><a href="https://certstream.dev/blog/">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="page-header">
+            <div class="wrap">
+                <span class="eyebrow">Package repositories</span>
+                <h1>Install with apt or dnf</h1>
+                <p>Add the repository once and updates arrive with the rest of your system. Packages install a systemd unit and keep Certificate Transparency log positions across restarts.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <div class="section-header"><h2>Debian, Ubuntu</h2></div>
+                <div class="code-examples" style="grid-template-columns: 1fr;">
+                    <div class="code-example">
+                        <div class="code-example-header"><span class="lang">apt</span></div>
+<pre>sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://reloading01.github.io/packages/key.gpg \
+  | sudo tee /etc/apt/keyrings/certstream.asc > /dev/null
+
+echo "deb [signed-by=/etc/apt/keyrings/certstream.asc] \
+https://reloading01.github.io/packages/apt stable main" \
+  | sudo tee /etc/apt/sources.list.d/certstream.list
+
+sudo apt update
+sudo apt install certstream-server-rust
+sudo systemctl enable --now certstream-server-rust</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <div class="section-header"><h2>Fedora, RHEL, openSUSE</h2></div>
+                <div class="code-examples" style="grid-template-columns: 1fr;">
+                    <div class="code-example">
+                        <div class="code-example-header"><span class="lang">dnf</span></div>
+<pre>sudo rpm --import https://reloading01.github.io/packages/key.gpg
+
+sudo tee /etc/yum.repos.d/certstream.repo > /dev/null &lt;&lt;'REPO'
+[certstream]
+name=certstream-server-rust
+baseurl=https://reloading01.github.io/packages/rpm
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://reloading01.github.io/packages/key.gpg
+REPO
+
+sudo dnf install certstream-server-rust
+sudo systemctl enable --now certstream-server-rust</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <div class="section-header"><h2>Verifying</h2></div>
+                <div class="center-block">
+                    <p>Both repositories are signed with the key below. Package managers check it on every update, so a tampered mirror fails rather than installs.</p>
+                    <p><code>C5D7 B0D1 42A6 1EF0 FB1A BE95 462A 111C FD91 20EE</code></p>
+                    <p>Prefer not to add a repository? Individual .deb and .rpm files, plus static binaries and their checksums, are on the <a href="https://github.com/reloading01/certstream-server-rust/releases/latest">releases page</a>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="wrap">
+            <div class="links">
+                <a href="https://github.com/reloading01/certstream-server-rust">GitHub</a>
+                <a href="https://certstream.dev/">Documentation</a>
+                <a href="https://certstream.dev/blog/">Blog</a>
+                <a href="https://github.com/sponsors/reloading01">Sponsor</a>
+            </div>
+            <span class="colophon">certstream-server-rust</span>
+        </div>
+    </footer>
+</body>
+</html>
